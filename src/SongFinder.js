@@ -98,25 +98,31 @@ const SongFinder = () => {
           Get Song Details
         </button>
         {songDetails && audioFeatures && (
-          <div className="mt-6">
-            <div className="song-details flex items-center space-x-4">
+          <div className="mt-6 text-center">
+            {/* Song Title */}
+            <div className="text-2xl font-bold mb-4">{songDetails.name}</div>
+
+            {/* Album Artwork */}
+            <div className="mb-4">
               <img
                 src={songDetails.album.images[1].url}
                 alt="Album artwork"
-                className="w-24 h-24 rounded shadow"
+                className="mx-auto w-48 h-48 rounded shadow"
               />
-              <div>
-                <strong className="block text-lg">{songDetails.name}</strong>
-                <span className="text-gray-600">
-                  by {songDetails.artists[0].name}
-                </span>
-              </div>
             </div>
-            <div className="mt-6 space-y-2">
-              <div className="text-gray-700">
+
+            {/* Artist Name */}
+            <div className="text-xl mb-4">
+              by{" "}
+              <span className="font-bold">{songDetails.artists[0].name}</span>
+            </div>
+
+            {/* Key and BPM Info */}
+            <div className="space-y-2">
+              <div className="text-xl font-bold">
                 Key: {formatKey(audioFeatures.key, audioFeatures.mode)}
               </div>
-              <div className="text-gray-700">
+              <div className="text-xl font-bold">
                 BPM: {Math.round(audioFeatures.tempo)}
               </div>
             </div>
